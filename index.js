@@ -1,4 +1,22 @@
-const openAddPlayerModal = () => document.getElementById('addPlayerModal').classList.add('show');
+const openAddPlayerModal = (position) => { 
+    const modal = document.getElementById('addPlayerModal')
+    modal.classList.add('show')
+
+    // reset the form every time we open the model
+    const form = modal.querySelector('form');
+    form.reset();
+
+    const positionSelect = document.getElementById('positionSelect');
+    // empty the select chija
+    positionSelect.innerHTML = ``;
+
+    // creat option lighadi ikon == option
+    const option  = document.createElement('option');
+    option.value = position;
+    option.textContent = position;
+    option.selected = true;
+    positionSelect.append(option);
+};
 const closeAddPlayerModal = () => document.getElementById('addPlayerModal').classList.remove('show');
 
 
@@ -6,20 +24,7 @@ const PlayerCard = document.querySelectorAll('.player-card').forEach(card => {
     card.addEventListener("click", () => {
         // get position from the card;
         const position = card.querySelector('.position-label').textContent.trim()
-
-        // open player card
-        openAddPlayerModal();
-
-        const positionSelect = document.getElementById('positionSelect');
-        // empty the select chija
-        positionSelect.innerHTML = ``;
-
-        // creat option lighadi ikon == option
-        const option  = document.createElement('option');
-        option.value = position;
-        option.textContent = position;
-        option.selected = true;
-        positionSelect.append(option);
+        openAddPlayerModal(position);
     })
 });
 
