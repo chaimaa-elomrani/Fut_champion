@@ -52,11 +52,13 @@ positionLabels.forEach(e => {
 })
 
 
+const addPlayer = () => {
+    // ana hna db
+}, 
 
         saveDataToLocalStorage(), 
         loadDataFromLocalStorage(),
         createPlayerFromForm(),
-        addPlayer(), 
         editPlayer(), 
         deletePlayer(),
         renderPlayers(),
