@@ -30,12 +30,12 @@ const PlayerCard = document.querySelectorAll('.player-card').forEach(card => {
 
 
 
-function addPlayer(event) {
-    event.preventDefault();
-    alert('Player added successfully!');
-    closeAddPlayerModal();
-    event.target.reset();
-}
+// function addPlayer(event) {
+//     event.preventDefault();
+//     alert('Player added successfully!');
+//     closeAddPlayerModal();
+//     event.target.reset();
+// }
 
 // Close modal when clicking outside
 window.onclick = function(event) {
@@ -52,11 +52,31 @@ positionLabels.forEach(e => {
 })
 
 
-const addPlayer = () => {
-    // ana hna db
-}, 
+const addPlayer = (event) => {
+    event.preventDefault();
 
-        saveDataToLocalStorage(), 
+    const form = event.target;
+    // take inputs value 
+    const PlayerName = form.querySelector('input[type="text"]').value.trim();
+    const playerPosition = form.querySelector('select').value.trim();
+    const playerRating = form.querySelector('input[placeholder="0-99"]').value.trim();
+    const PlayerPrice = form.querySelector('input[placeholder="0"]').value.trim();
+
+    // store them in this object ghadi nrdo global mnb3d 
+    const playerData = {
+        name: PlayerName,
+        position: playerPosition,
+        rating: playerRating,
+        price: PlayerPrice
+    }
+    
+    console.log("player data : ", playerData);
+
+    closeAddPlayerModal();
+    form.reset();
+}
+
+        saveDataToLocalStorage()
         loadDataFromLocalStorage(),
         createPlayerFromForm(),
         editPlayer(), 
