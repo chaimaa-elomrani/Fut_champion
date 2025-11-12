@@ -28,15 +28,6 @@ const PlayerCard = document.querySelectorAll('.player-card').forEach(card => {
     })
 });
 
-
-
-// function addPlayer(event) {
-//     event.preventDefault();
-//     alert('Player added successfully!');
-//     closeAddPlayerModal();
-//     event.target.reset();
-// }
-
 // Close modal when clicking outside
 window.onclick = function(event) {
     const modal = document.getElementById('addPlayerModal');
@@ -51,10 +42,10 @@ positionLabels.forEach(e => {
     console.log(e.textContent);
 })
 
-
+const playerData = {}
 const addPlayer = (event) => {
     event.preventDefault();
-
+    
     const form = event.target;
     // take inputs value 
     const PlayerName = form.querySelector('input[type="text"]').value.trim();
@@ -63,18 +54,14 @@ const addPlayer = (event) => {
     const PlayerPrice = form.querySelector('input[placeholder="0"]').value.trim();
 
     // store them in this object ghadi nrdo global mnb3d 
-    const playerData = {
-        name: PlayerName,
-        position: playerPosition,
-        rating: playerRating,
-        price: PlayerPrice
-    }
-    
+    // const playerData[index] = [ PlayerName, playerPosition, playerRating, PlayerPrice ]
+
     console.log("player data : ", playerData);
 
     closeAddPlayerModal();
     form.reset();
 }
+
 
         saveDataToLocalStorage()
         loadDataFromLocalStorage(),
@@ -86,4 +73,4 @@ const addPlayer = (event) => {
         getFormationPositions(), 
         arrangePlayersByFormation(),
         validatePlayerForm(),
-        showFormError()
+        showFormErrorasdhadi()
