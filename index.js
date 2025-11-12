@@ -20,3 +20,18 @@
                 modal.classList.remove('show');
             }
         }
+
+
+
+        saveDataToLocalStorage(), 
+        loadDataFromLocalStorage(),
+          createPlayerFromForm(),
+           addPlayer(), 
+           editPlayer(), 
+           deletePlayer(),
+            renderPlayers(),
+            setFormation(),
+             getFormationPositions(), 
+             arrangePlayersByFormation(),
+             validatePlayerForm(),
+              showFormError(),
