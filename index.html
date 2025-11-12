@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squad Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="index.css">
+  
+</head>
+<body>
+    <!-- Added stadium background image -->
+    <div class="stadium-bg min-h-screen relative">
+        <div class="stadium-overlay"></div>
+        
+        <div class="relative z-10 p-6 text-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex justify-between items-center mb-6">
+                    <h1 class="text-3xl font-bold text-green-400">Squad Builder</h1>
+                    <button class="add-button px-4 py-2 rounded font-semibold text-sm">+ Add Tactics</button>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Main Pitch -->
+                    <div class="lg:col-span-2">
+                        <div class="pitch w-full  flex flex-col items-center justify-center relative p-8">
+                            <!-- Formation: 4-2-3-1 -->
+                            
+                            <!-- Row 1: Goalkeeper -->
+                            <div class="w-full flex justify-center mb-20">
+                                <div class="player-card">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label">GK</div>
+                                </div>
+                            </div>
+
+                            <!-- Row 2: Defence -->
+                            <div class="w-full flex justify-around mb-16 px-12">
+                                <div class="player-card">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label">CB</div>
+                                </div>
+                                <div class="player-card">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label">CB</div>
+                                </div>
+                                <div class="player-card">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label">CB</div>
+                                </div>
+                                <div class="player-card">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label">CB</div>
+                                </div>
+                            </div>
+
+                            <!-- Row 3: Fullbacks & Wide Defence -->
+                            <div class="w-full flex justify-between px-4 mb-12 items-center">
+                                <div class="player-card">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label">LB</div>
+                                </div>
+                                <div class="player-card">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label">CB</div>
+                                </div>
+                                <div class="player-card">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label">CB</div>
+                                </div>
+                                <div class="player-card">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label">RB</div>
+                                </div>
+                            </div>
+
+                            <!-- Row 4: Midfield -->
+                            <div class="w-full flex justify-around px-8 mb-12">
+                                <div class="player-card">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label">CM</div>
+                                </div>
+                                <div class="player-card">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label">CM</div>
+                                </div>
+                                <div class="player-card">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label">CAM</div>
+                                </div>
+                            </div>
+
+                            <!-- Row 5: Attack -->
+                            <div class="w-full flex justify-around px-12">
+                                <div class="player-card">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label">LW</div>
+                                </div>
+                                <div class="player-card">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label">ST</div>
+                                </div>
+                                <div class="player-card">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label">RW</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bench Section -->
+                        <!-- Updated bench styling to match new aesthetic -->
+                        <div class="mt-8 sidebar-card p-6">
+                            <h3 class="text-sm font-semibold text-green-400 mb-4 tracking-widest">SUBSTITUTES</h3>
+                            <div class="flex gap-3 overflow-x-auto pb-2">
+                                <div class="player-card flex-shrink-0">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label text-xs">SUB</div>
+                                </div>
+                                <div class="player-card flex-shrink-0">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label text-xs">SUB</div>
+                                </div>
+                                <div class="player-card flex-shrink-0">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label text-xs">SUB</div>
+                                </div>
+                                <div class="player-card flex-shrink-0">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label text-xs">SUB</div>
+                                </div>
+                                <div class="player-card flex-shrink-0">
+                                    <div class="hexagon">
+                                        <span class="text-lg text-green-400">+</span>
+                                    </div>
+                                    <div class="position-label text-xs">SUB</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Sidebar -->
+                    <div class="space-y-6">
+                        <!-- Create Squad Card -->
+                        <!-- Enhanced sidebar card styling with stadium theme -->
+                        <div class="sidebar-card p-6">
+                            <h2 class="text-xl font-bold text-green-400 mb-4">Create Squad</h2>
+                            
+                            <input type="text" placeholder="Squad name" class="input-field">
+                            
+                            <div class="mb-4">
+                                <label class="text-sm text-green-400 mb-2 block font-semibold">Formation</label>
+                                <select class="input-field bg-black">
+                                    <option class="bg-slate-800">4-2-3-1</option>
+                                    <option class="bg-slate-800">4-3-3</option>
+                                    <option class="bg-slate-800">5-3-2</option>
+                                    <option class="bg-slate-800">3-5-2</option>
+                                </select>
+                            </div>
+
+                            <!-- Add Player Button -->
+                            <button onclick="openAddPlayerModal()" class="w-full add-button py-3 rounded font-semibold text-sm mb-4 transition">
+                                + Add Player
+                            </button>
+
+                            <div class="space-y-2 mt-6">
+                                <div class="stat-item">
+                                    <div class="flex justify-between text-sm mb-2">
+                                        <span class="text-slate-300">Squad Rating</span>
+                                        <span class="text-green-400 font-bold">0</span>
+                                    </div>
+                                    <div class="flex gap-1 text-yellow-400">
+                                        <span>★★★★★</span>
+                                    </div>
+                                </div>
+
+                                <div class="stat-item">
+                                    <div class="flex justify-between text-sm">
+                                        <span class="text-slate-300">Total Chemistry</span>
+                                        <span class="text-green-400 font-bold">0/33</span>
+                                    </div>
+                                </div>
+
+                                <div class="stat-item">
+                                    <div class="flex justify-between text-sm">
+                                        <span class="text-slate-300">Price</span>
+                                        <span class="text-green-400 font-bold">0 coins</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Squad Info Card -->
+                        <div class="sidebar-card p-6">
+                            <h3 class="text-lg font-bold text-green-400 mb-4">Squad Info</h3>
+                            <div class="space-y-3 text-sm">
+                                <div class="stat-item">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-300">Pace</span>
+                                        <span class="text-green-400 font-bold">-</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-300">Shooting</span>
+                                        <span class="text-green-400 font-bold">-</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-300">Passing</span>
+                                        <span class="text-green-400 font-bold">-</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-300">Dribbling</span>
+                                        <span class="text-green-400 font-bold">-</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-300">Defense</span>
+                                        <span class="text-green-400 font-bold">-</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-300">Physical</span>
+                                        <span class="text-green-400 font-bold">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Player Modal -->
+    <!-- Enhanced modal with stadium theme styling -->
+    <div id="addPlayerModal" class="modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-green-400">Add Player</h2>
+                <button onclick="closeAddPlayerModal()" class="close-btn">&times;</button>
+            </div>
+
+            <form onsubmit="addPlayer(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-green-400 mb-2">Player Name</label>
+                    <input type="text" placeholder="Enter player name" required class="input-field">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-green-400 mb-2">Position</label>
+                    <select required class="input-field bg-black">
+                        <option class="bg-slate-800">Select Position</option>
+                        <option class="bg-slate-800">GK</option>
+                        <option class="bg-slate-800">CB</option>
+                        <option class="bg-slate-800">LB</option>
+                        <option class="bg-slate-800">RB</option>
+                        <option class="bg-slate-800">CM</option>
+                        <option class="bg-slate-800">CAM</option>
+                        <option class="bg-slate-800">LW</option>
+                        <option class="bg-slate-800">RW</option>
+                        <option class="bg-slate-800">ST</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-green-400 mb-2">Overall Rating</label>
+                    <input type="number" min="1" max="99" placeholder="0-99" required class="input-field">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-green-400 mb-2">Price (Coins)</label>
+                    <input type="number" min="0" placeholder="0" required class="input-field">
+                </div>
+
+                <div class="flex gap-3 pt-4">
+                    <button type="button" onclick="closeAddPlayerModal()" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white py-2 rounded font-semibold transition">
+                        Cancel
+                    </button>
+                    <button type="submit" class="flex-1 add-button py-2 rounded font-semibold transition">
+                        Add Player
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
