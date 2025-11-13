@@ -3,331 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Squad Builder</title>
+    <title>FUT Champians</title>
+    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Overlock+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="index.css">
-  
-</head>
-<body>
-    <!-- Added stadium background image -->
-    <div class="stadium-bg min-h-screen relative">
-        <div class="stadium-overlay"></div>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                primary: ['Khand', 'sans-serif'],
+                secondary: ['"Overlock SC"', 'cursive'],
+                odibee: ['"Odibee Sans"', 'cursive'],
+              },
+            },
+          },
+        }
+      </script>
+      <style>
         
-        <div class="relative z-10 p-6 text-white">
-            <div class="max-w-7xl mx-auto">
-                <div class="flex justify-between items-center mb-6">
-                    <h1 class="text-3xl font-bold text-green-400">Squad Builder</h1>
-                    <button class="add-button px-4 py-2 rounded font-semibold text-sm">+ Add Tactics</button>
-                </div>
+        input[type="search"]::-webkit-search-cancel-button
+        {
+        -webkit-appearance:none;
+        }
+        .card{
+            background-image: url(./img/card.webp);
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 150px;
+            width: 100px;
+            display: none ;
+        }
+       
+      </style>
+</head>
+<body class="m-0 p-0 font-primary w-full min-h-screen h-full text-white">
+  <header class="w-full h-20 bg-[#2D353C]">
+    <nav class="flex w-full h-full items-center justify-between">
+       <div class="flex gap-8 pr-8  md:text-2xl">
+        <a href="../index.html" class="cursor-pointer">Squad</a>
+        <a href="./pages/players.html" class="cursor-pointer">Players</a>
+        
+       </div>
+        <input class="mr-8 bg-[#161A1D] pl-8 rounded-2xl hidden md:block md:w-64 h-8 outline-none" type="search" name="search" id="search" placeholder="Search player here...">
+    </nav>
+</header>
 
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- Main Pitch -->
-                    <div class="lg:col-span-2">
-                        <div class="pitch w-full  flex flex-col items-center justify-center relative p-8">
-                            <!-- Formation: 4-2-3-1 -->
-                            
-                            <!-- Row 1: Goalkeeper -->
-                            <div class="w-full flex justify-center mb-20">
-                                <div class="player-card">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label">GK</div>
-                                </div>
-                            </div>
+  <div class="min-h-screen  w-full bg-[url('img/bg.png')] h-full  bg-cover bg-no-repeat bg-black flex flex-col items-center md:flex-row md:gap-32 md:justify-center pt-16 ">
 
-                            <!-- Row 2: Defence -->
-                            <div class="w-full flex justify-around mb-16 px-12">
-                                <div class="player-card">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label">CB</div>
-                                </div>
-                                <div class="player-card">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label">CB</div>
-                                </div>
-                                <div class="player-card">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label">CB</div>
-                                </div>
-                                <div class="player-card">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label">CB</div>
-                                </div>
-                            </div>
-
-                            <!-- Row 3: Fullbacks & Wide Defence -->
-                            <div class="w-full flex justify-between px-4 mb-12 items-center">
-                                <div class="player-card">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label">LB</div>
-                                </div>
-                                <div class="player-card">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label">CB</div>
-                                </div>
-                                <div class="player-card">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label">CB</div>
-                                </div>
-                                <div class="player-card">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label">RB</div>
-                                </div>
-                            </div>
-
-                            <!-- Row 4: Midfield -->
-                            <div class="w-full flex justify-around px-8 mb-12">
-                                <div class="player-card">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label">CM</div>
-                                </div>
-                                <div class="player-card">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label">CM</div>
-                                </div>
-                                <div class="player-card">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label">CAM</div>
-                                </div>
-                            </div>
-
-                            <!-- Row 5: Attack -->
-                            <div class="w-full flex justify-around px-12">
-                                <div class="player-card">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label">LW</div>
-                                </div>
-                                <div class="player-card">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label">ST</div>
-                                </div>
-                                <div class="player-card">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label">RW</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Bench Section -->
-                        <!-- Updated bench styling to match new aesthetic -->
-                        <div class="mt-8 sidebar-card p-6">
-                            <h3 class="text-sm font-semibold text-green-400 mb-4 tracking-widest">SUBSTITUTES</h3>
-                            <div class="flex gap-3 overflow-x-auto pb-2">
-                                <div class="player-card flex-shrink-0">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label text-xs">SUB</div>
-                                </div>
-                                <div class="player-card flex-shrink-0">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label text-xs">SUB</div>
-                                </div>
-                                <div class="player-card flex-shrink-0">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label text-xs">SUB</div>
-                                </div>
-                                <div class="player-card flex-shrink-0">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label text-xs">SUB</div>
-                                </div>
-                                <div class="player-card flex-shrink-0">
-                                    <div class="hexagon">
-                                        <span class="text-lg text-green-400">+</span>
-                                    </div>
-                                    <div class="position-label text-xs">SUB</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right Sidebar -->
-                    <div class="space-y-6">
-                        <!-- Create Squad Card -->
-                        <!-- Enhanced sidebar card styling with stadium theme -->
-                        <div class="sidebar-card p-6">
-                            <h2 class="text-xl font-bold text-green-400 mb-4">Create Squad</h2>
-                            
-                            <input type="text" placeholder="Squad name" class="input-field">
-                            
-                            <div class="mb-4">
-                                <label class="text-sm text-green-400 mb-2 block font-semibold">Formation</label>
-                                <select class="input-field bg-black">
-                                    <option class="bg-slate-800">4-2-3-1</option>
-                                    <option class="bg-slate-800">4-3-3</option>
-                                    <option class="bg-slate-800">5-3-2</option>
-                                    <option class="bg-slate-800">3-5-2</option>
-                                </select>
-                            </div>
-
-                            <!-- Add Player Button -->
-                            <button onclick="openAddPlayerModal()" class="w-full add-button py-3 rounded font-semibold text-sm mb-4 transition">
-                                + Add Player
-                            </button>
-
-                            <div class="space-y-2 mt-6">
-                                <div class="stat-item">
-                                    <div class="flex justify-between text-sm mb-2">
-                                        <span class="text-slate-300">Squad Rating</span>
-                                        <span class="text-green-400 font-bold">0</span>
-                                    </div>
-                                    <div class="flex gap-1 text-yellow-400">
-                                        <span>★★★★★</span>
-                                    </div>
-                                </div>
-
-                                <div class="stat-item">
-                                    <div class="flex justify-between text-sm">
-                                        <span class="text-slate-300">Total Chemistry</span>
-                                        <span class="text-green-400 font-bold">0/33</span>
-                                    </div>
-                                </div>
-
-                                <div class="stat-item">
-                                    <div class="flex justify-between text-sm">
-                                        <span class="text-slate-300">Price</span>
-                                        <span class="text-green-400 font-bold">0 coins</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Squad Info Card -->
-                        <div class="sidebar-card p-6">
-                            <h3 class="text-lg font-bold text-green-400 mb-4">Squad Info</h3>
-                            <div class="space-y-3 text-sm">
-                                <div class="stat-item">
-                                    <div class="flex justify-between">
-                                        <span class="text-slate-300">Pace</span>
-                                        <span class="text-green-400 font-bold">-</span>
-                                    </div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="flex justify-between">
-                                        <span class="text-slate-300">Shooting</span>
-                                        <span class="text-green-400 font-bold">-</span>
-                                    </div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="flex justify-between">
-                                        <span class="text-slate-300">Passing</span>
-                                        <span class="text-green-400 font-bold">-</span>
-                                    </div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="flex justify-between">
-                                        <span class="text-slate-300">Dribbling</span>
-                                        <span class="text-green-400 font-bold">-</span>
-                                    </div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="flex justify-between">
-                                        <span class="text-slate-300">Defense</span>
-                                        <span class="text-green-400 font-bold">-</span>
-                                    </div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="flex justify-between">
-                                        <span class="text-slate-300">Physical</span>
-                                        <span class="text-green-400 font-bold">-</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class=" md:w-3/5  h-[525px] bg-center flex flex-col  mb-32 bg-cover bg-no-repeat bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODkyIiBoZWlnaHQ9IjcyNSIgdmlld0JveD0iMCAwIDkwNCA2NTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik05MDMgNjQ5LjQzOUgxTDEyMC4zMTEgMUg3ODMuNzg4TDkwMyA2NDkuNDM5WiIgZmlsbD0iIzQwNDA0MCIgc3Ryb2tlPSIjNjk2OTY5IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz4KPHBhdGggZD0iTTY5Ljg4NDMgMjc1LjAzOEg4MzQuMTY5IiBzdHJva2U9IiM2OTY5NjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8cGF0aCBkPSJNNTUwLjk5MiAyNzUuNDI1QzU1My4xOTQgMzIxLjcwMyA1MDguOTIxIDM2MC43NjMgNDUyLjAxOSAzNjAuNzYzQzM5NS4xMTcgMzYwLjc2MyAzNTAuODUzIDMyMS43MDMgMzUzLjA2MiAyNzUuNDI1QzM1NS4xNzIgMjMxLjEyMyAzOTkuNDUyIDE5Ni41NjQgNDUyLjAzNSAxOTYuNTY0QzUwNC42MTggMTk2LjU2NCA1NDguODkgMjMxLjExNSA1NTAuOTkyIDI3NS40MjVaIiBzdHJva2U9IiM2OTY5NjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8cGF0aCBkPSJNNTQxLjI4OCA3MS40MDA4QzU0My4wNzggMTA5LjAwOSA1MDMuMDg2IDE0MC42MzIgNDUxLjg5NyAxNDAuNjMyQzQwMC43MDggMTQwLjYzMiAzNjAuNzMyIDEwOS4wMTcgMzYyLjUzIDcxLjQwMDhDMzY0LjI1OSAzNS4yNDQ2IDQwNC4yNTEgNi45MzU5MSA0NTEuOTIgNi45MzU5MUM0OTkuNTgyIDYuOTM1OTEgNTM5LjU3NCAzNS4yNDQ2IDU0MS4yODggNzEuNDAwOFoiIHN0cm9rZT0iIzY5Njk2OSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+CjxwYXRoIGQ9Ik0yNjkuMTI1IDk2LjQ5OTZINjQwLjA5M0w2MzAuNjYzIDEuMTUzMkgyNzguMzEyTDI2OS4xMjUgOTYuNDk5NloiIGZpbGw9IiM0MDQwNDAiIHN0cm9rZT0iIzY5Njk2OSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+CjxwYXRoIGQ9Ik0zNzEuOTIyIDU0Ljc2MjVINTMyLjU0Mkw1MzAuMjE5IDEuMTM3MTVIMzc0LjI0NUwzNzEuOTIyIDU0Ljc2MjVaIiBzdHJva2U9IiM2OTY5NjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8cGF0aCBkPSJNMzQzLjQ2NCA1MzAuMzMzQzM0Ni4wNjEgNDc0LjU1NCAzOTUuNzggNDMxLjI2MSA0NTQuNjI0IDQzMS4yNjFDNTEzLjQ2OSA0MzEuMjYxIDU2My4yNzkgNDc0LjU1NCA1NjUuOTk4IDUzMC4zMzNDNTY4Ljg1NSA1ODguOTEgNTE5LjE1MSA2MzguNiA0NTQuODUzIDYzOC42QzM5MC41NTQgNjM4LjYgMzQwLjczNyA1ODguOTEgMzQzLjQ3MSA1MzAuMzMzSDM0My40NjRaIiBzdHJva2U9IiM2OTY5NjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8cGF0aCBkPSJNNjc1LjU5NyA0OTIuNTcySDIyNy4yNkwyMTEuOTExIDY0OS4xOThINjkwLjg0TDY3NS41OTcgNDkyLjU3MloiIGZpbGw9IiM0MDQwNDAiIHN0cm9rZT0iIzY5Njk2OSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+CjxwYXRoIGQ9Ik01NTYuMzYyIDU1Ni42NDJIMzUyLjM1M0wzNDguNDMgNjQ5LjIzOEg1NjAuNDUzTDU1Ni4zNjIgNTU2LjY0MloiIHN0cm9rZT0iIzY5Njk2OSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+Cjwvc3ZnPg==')]">
+      <div class="w-[full] h-[10%] flex justify-evenly items-center translate-y-[-10px]">
+        <div id="LW" class="card flex flex-col justify-between items-center text-xs ">  
         </div>
+        <div id="ST" class="card flex flex-col justify-between items-center text-xs"></div>
+        <div id="RW" class="card flex flex-col justify-between items-center text-xs"></div>
+      </div>
+      <div class="w-full h-full flex justify-evenly items-center translate-y-[20px] ">
+        <div id="CML" class="CM card flex flex-col justify-between items-center text-xs"></div>
+        <div id="CM" class="CM card flex flex-col justify-between items-center text-xs"></div>
+        <div id="CMR" class="CM card flex flex-col justify-between items-center text-xs"></div>
+      </div>
+      <div class="w-full h-[60%] flex flex-col justify-evenly">
+        <div class="flex justify-around">
+          <div id="LB" class="card flex flex-col justify-between items-center text-xs"></div>
+          <div id="CBL" class="CB card flex flex-col justify-between items-center text-xs translate-y-[30px]"></div>
+          <div id="CBR" class="CB card flex flex-col justify-between items-center text-xs translate-y-[30px]"></div>
+          <div id="RB" class="card flex flex-col justify-between items-center text-xs"></div>
+        </div>
+        <div class="flex justify-center ">
+          <div id="GK" class="card flex flex-col justify-between items-center text-xs translate-y-[-30px] md:translate-y-[0px]">
+            
+          </div>
+        </div>
+       
+      </div>
+
+   
+    
     </div>
 
-    <!-- Add Player Modal -->
-    <!-- Enhanced modal with stadium theme styling -->
-    <div id="addPlayerModal" class="modal">
-        <div class="modal-content">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold text-green-400">Add Player</h2>
-                <button onclick="closeAddPlayerModal()" class="close-btn">&times;</button>
-            </div>
 
-            <form onsubmit="addPlayer(event)" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-semibold text-green-400 mb-2">Player Name</label>
-                    <input type="text" placeholder="Enter player name" required class="input-field">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-semibold text-green-400 mb-2">Position</label>
-                    <select id="positionSelect" required class="input-field bg-black">
-                        <option class="bg-slate-800">Select Position</option>
-                        <option class="bg-slate-800">GK</option>
-                        <option class="bg-slate-800">CB</option>
-                        <option class="bg-slate-800">LB</option>
-                        <option class="bg-slate-800">RB</option>
-                        <option class="bg-slate-800">CM</option>
-                        <option class="bg-slate-800">CAM</option>
-                        <option class="bg-slate-800">LW</option>
-                        <option class="bg-slate-800">RW</option>
-                        <option class="bg-slate-800">ST</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-semibold text-green-400 mb-2">Overall Rating</label>
-                    <input type="number" min="1" max="99" placeholder="0-99" required class="input-field">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-semibold text-green-400 mb-2">Price (Coins)</label>
-                    <input type="number" min="0" placeholder="0" required class="input-field">
-                </div>
-
-                <div class="flex gap-3 pt-4">
-                    <button type="button" onclick="closeAddPlayerModal()" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white py-2 rounded font-semibold transition">
-                        Cancel
-                    </button>
-                    <button type="submit" class="flex-1 add-button py-2 rounded font-semibold transition">
-                        Add Player
-                    </button>
-                </div>
-            </form>
+    <div class="w-4/5 md:w-1/5 h-72 bg-[#2D353C] rounded-2xl mb-16">
+      <h1 class="p-2 text-center">Manage Ur Squad</h1>
+      <hr>
+      <div class="w-full h-4/5 p-4 flex flex-col justify-around">
+        <div class="">
+          <p class="text-bold text-xl">Formation</p>
+          <select class="bg-[#161A1D] px-2 pl-5 py-1 rounded-2xl w-full"  name="positionSquad" id="positionSquad">
+            <option value="4-3-3" checked>4 - 3 - 3</option>
+            <option value=""></option>
+          </select>
         </div>
+        <div class="flex flex-col gap-2">
+          <button onclick="showAllPlayersListl()" class="w-full bg-[#0E4C82] px-2 rounded-md text-lg">All Players</button>
+          <button onclick="showAddToSquadModal()" class="w-full bg-[#0E4C82] px-2 rounded-md text-lg">Add Player to squad</button>
+          <!-- <button id="reserve-btn" onclick="showReserveList()" class="w-full bg-[#0E4C82] px-2 rounded-md text-lg">Reserve Players</button> -->
+        </div>
+      </div>
+
     </div>
 
-    <script src="index.js"></script>
-</body>
+  </div>
+
+  
+  <div id="modal" class=" modal bg-black bg-opacity-75 hidden block fixed inset-0 z-50 ">
+    <div id="reservePlayer-list" class="w-full flex flex-col gap-4 h-full overflow-auto border border-2 border-black rounded-tr-3xl rounded-br-3xl bg-[#2D353C] relative z-50 md:w-[40%] lg:w-[50%] ">
+    <div class="w-full">
+      <svg class=" fill-primary absolute cursor-pointer top-0 right-0 pr-4 pt-2 w-10 h-8"    onclick="document.getElementById('modal').style.display='none'" xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24"><path   d="M20.48 3.512a11.97 11.97 0 0 0-8.486-3.514C5.366-.002-.007 5.371-.007 11.999c0 3.314 1.344 6.315 3.516 8.487A11.97 11.97 0 0 0 11.995 24c6.628 0 12.001-5.373 12.001-12.001c0-3.314-1.344-6.315-3.516-8.487m-1.542 15.427a9.8 9.8 0 0 1-6.943 2.876c-5.423 0-9.819-4.396-9.819-9.819a9.8 9.8 0 0 1 2.876-6.943a9.8 9.8 0 0 1 6.942-2.876c5.422 0 9.818 4.396 9.818 9.818a9.8 9.8 0 0 1-2.876 6.942z"/><path fill="#5051fa" d="m13.537 12l3.855-3.855a1.091 1.091 0 0 0-1.542-1.541l.001-.001l-3.855 3.855l-3.855-3.855A1.091 1.091 0 0 0 6.6 8.145l-.001-.001l3.855 3.855l-3.855 3.855a1.091 1.091 0 1 0 1.541 1.542l.001-.001l3.855-3.855l3.855 3.855a1.091 1.091 0 1 0 1.542-1.541l-.001-.001z"/></svg>
+      <p id="modal-title" class="text-center py-4">Reserver Players List</p>
+    </div>
+      <div id="players-list" class="w-full h-auto  justify-around gap-2 flex flex-wrap ">
+       
+
+      </div>
+    </div>
+
+        
+  </div>
+  <div id="addToSquadModal" class="modal bg-black bg-opacity-75 hidden  justify-center fixed inset-0 z-50 ">
+    <div class="w-full m-8 h-4/5 border border-2 border-black rounded-3xl bg-[#2D353C] relative flex flex-col gap-2 z-50 md:w-3/5 py-8 overflow-y-auto  ">
+      <svg class=" fill-primary absolute cursor-pointer top-0 right-0 pr-4 pt-2 w-10 h-8"    onclick="document.getElementById('addToSquadModal').style.display='none'" xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24"><path   d="M20.48 3.512a11.97 11.97 0 0 0-8.486-3.514C5.366-.002-.007 5.371-.007 11.999c0 3.314 1.344 6.315 3.516 8.487A11.97 11.97 0 0 0 11.995 24c6.628 0 12.001-5.373 12.001-12.001c0-3.314-1.344-6.315-3.516-8.487m-1.542 15.427a9.8 9.8 0 0 1-6.943 2.876c-5.423 0-9.819-4.396-9.819-9.819a9.8 9.8 0 0 1 2.876-6.943a9.8 9.8 0 0 1 6.942-2.876c5.422 0 9.818 4.396 9.818 9.818a9.8 9.8 0 0 1-2.876 6.942z"/><path fill="#5051fa" d="m13.537 12l3.855-3.855a1.091 1.091 0 0 0-1.542-1.541l.001-.001l-3.855 3.855l-3.855-3.855A1.091 1.091 0 0 0 6.6 8.145l-.001-.001l3.855 3.855l-3.855 3.855a1.091 1.091 0 1 0 1.541 1.542l.001-.001l3.855-3.855l3.855 3.855a1.091 1.091 0 1 0 1.542-1.541l-.001-.001z"/></svg>
+      <h2 class="text-center text-xl ">Choose a player From the player list</h2>
+      <div class="flex justify-between px-4">
+        <input class="bg-[#161A1D] px-2 pl-4 outline-none py-1 rounded-2xl w-2/5" type="search" name="searchPlayer" id="searchPlayer" placeholder="Search player by name...">
+        <select class="bg-[#161A1D] px-2 py-1 rounded-2xl" name="position" id="positions">
+          <option value="" checked>Select a Position</option>
+          <option value="GK">GK</option>
+          <option value="CBL">CBL</option>
+          <option value="CBR">CBR</option>
+          <option value="LB">LB</option>
+          <option value="RB">RB</option>
+          <option value="CM">CM</option>
+          <option value="CMR">CMR</option>
+          <option value="CML">CML</option>
+          <option value="LW">LW</option>
+          <option value="RW">RW</option>
+          <option value="ST">ST</option>
+        </select>
+      </div>
+      <div id="playersArea" class="w-full h-[50%] flex justify-around gap-4 flex-wrap ">
+        
+        
+      
+        
+      </div>
+      
+
+    </div>
+  
+    
+</div>
+
+<div id="confirmModal" class="modal bg-black bg-opacity-75 hidden items-center justify-center fixed inset-0 z-50 ">
+  <div class="w-1/5 m-8 h-1/5 border border-2 border-black rounded-3xl bg-[#2D353C] relative flex flex-col gap-2 z-50 md:w-[30%] py-8  ">
+    <svg class=" fill-primary absolute cursor-pointer top-0 right-0 pr-4 pt-2 w-10 h-8"    onclick="document.getElementById('confirmModal').style.display='none'" xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24"><path   d="M20.48 3.512a11.97 11.97 0 0 0-8.486-3.514C5.366-.002-.007 5.371-.007 11.999c0 3.314 1.344 6.315 3.516 8.487A11.97 11.97 0 0 0 11.995 24c6.628 0 12.001-5.373 12.001-12.001c0-3.314-1.344-6.315-3.516-8.487m-1.542 15.427a9.8 9.8 0 0 1-6.943 2.876c-5.423 0-9.819-4.396-9.819-9.819a9.8 9.8 0 0 1 2.876-6.943a9.8 9.8 0 0 1 6.942-2.876c5.422 0 9.818 4.396 9.818 9.818a9.8 9.8 0 0 1-2.876 6.942z"/><path fill="#5051fa" d="m13.537 12l3.855-3.855a1.091 1.091 0 0 0-1.542-1.541l.001-.001l-3.855 3.855l-3.855-3.855A1.091 1.091 0 0 0 6.6 8.145l-.001-.001l3.855 3.855l-3.855 3.855a1.091 1.091 0 1 0 1.541 1.542l.001-.001l3.855-3.855l3.855 3.855a1.091 1.091 0 1 0 1.542-1.541l-.001-.001z"/></svg>
+    <p class="text-center">Add this player to Elevent Players?</p>
+    <div class="flex justify-around ">
+      <button id='yes-btn'  class="bg-[#0E4C82] px-2 rounded-md text-lg">
+        Yes
+      </button>
+      <button id="no-btn" onclick="clickedNo()" class="bg-[#ff0000] px-2 rounded-md text-lg">
+        No 
+      </button>
+
+    </div>
+    <div class="translate-y-[-7px]">
+      <p class="text-center text-[10px] text-black">(if you press no it adds to substitues players)</p>
+
+    </div>
+
+  </div>
+</div>
+ 
+        <script src="./script/script.js"></script>
+</body> 
 </html>

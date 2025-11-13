@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUT Champians</title>
+    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Overlock+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                primary: ['Khand', 'sans-serif'],
+                secondary: ['"Overlock SC"', 'cursive'],
+                odibee: ['"Odibee Sans"', 'cursive'],
+              },
+            },
+          },
+        }
+      </script>
+      <style>
+        .slide-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 0;
+    background-color: #2D353C;
+    height: 3rem; 
+    width: 10rem; 
+    margin-top: 4rem; 
+    border-radius: 0.5rem; 
+    animation: slideRight 1s forwards;
+  }
+
+  @keyframes slideRight {
+    from {
+      right: -410px;
+    }
+    to {
+      right: -250px; /* Moves the element all the way to the right */
+    }
+  }
+    
+        input[type="search"]::-webkit-search-cancel-button
+        {
+        -webkit-appearance:none;
+        }
+        input[type="number"]::-webkit-inner-spin-button
+        {
+        -webkit-appearance:none;
+        }
+        .card{
+            background-image: url(../img/card.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 230px;
+            width: 160px;
+        }
+        .card2{
+            background-image: url(../img/card.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+           
+        }
+        input{
+          background-color: #161A1D;
+          outline: none;
+          
+        }
+        #modal .inputText{
+          border-radius: 10px;
+          padding-left: 8px;
+          padding-right: 5px;
+          padding-top: 2px;
+          padding-bottom: 2px;
+        }
+        
+      </style>
+</head>
+<body class="m-0 p-0 font-primary w-full min-h-screen h-full text-white">
+    <header class="w-full h-20 bg-[#2D353C]">
+        <nav class="flex w-full h-full items-center justify-between">
+            <img class=" h-32 w-32 md:h-44 md:w-40" src="../img/logo.png" alt="logo">
+           <div class="flex gap-8 pr-8  md:text-2xl">
+            <a href="../index.html" class="cursor-pointer">Squad</a>
+            <a href="./players.html" class="cursor-pointer">Players</a>
+            
+           </div>
+            <input class="mr-8 bg-[#161A1D] pl-8 rounded-2xl hidden md:block md:w-64 h-8 outline-none" type="search" name="search" id="search" placeholder="Search player here...">
+        </nav>
+    </header>
+  <div class="h-20 w-full bg-[#161A1D] flex items-center justify-between px-8">
+    <h1 class="md:text-[50px] tracking-[15px]	">SQUAD NAME</h1>
+    <p class=" pl-8 font-secondary text-xs md:text-lg flex items-center h-full">Build your dream XI, pick your team's next lineup, or plan your transfer window.</p>
+  </div>
+  <div class="min-h-screen h-full w-full bg-[url('../img/bg.png')] bg-cover bg-no-repeat bg-black   py-8 md:px-8 px-2 ">
+        <div class="flex justify-between w-full h-16 items-center px-4 ">
+            <div> <button onclick="showModal()" class="bg-[#0E4C82] px-2 rounded-md text-sm md:text-xl ">New Player</button>
+              
+            </div>
+            <div class="flex gap-2  items-center  ">
+                <div>
+                    <p>Filter BY: 
+                    </p>
+                </div>
+                
+                <div>
+                    <select class="bg-[#161A1D] px-2 py-1 rounded-2xl" name="position" id="positions">
+                        <option value="" checked>Select a Position</option>
+                        <option value="GK">GK</option>
+                        <option value="CBL">CBL</option>
+                        <option value="CBR">CBR</option>
+                        <option value="LB">LB</option>
+                        <option value="RB">RB</option>
+                        <option value="CM">CM</option>
+                        <option value="CMR">CMR</option>
+                        <option value="CML">CML</option>
+                        <option value="LW">LW</option>
+                        <option value="RW">RW</option>
+                        <option value="ST">ST</option>
+                      </select>
+                </div>
+            </div>
+
+        </div>
+        <div id="players-container" class="w-full bg-[rgba(22,26,29,0.7)] justify-center h-full min-h-[500px] rounded-2xl mb-8 flex flex-wrap">
+        </div>  
+     
+  </div>
+
+  <div id="modal" class="modal bg-black bg-opacity-75  hidden   justify-center fixed inset-0 z-50 ">
+    <div class="w-full m-8 h-4/5 border border-2 border-black rounded-3xl bg-[#2D353C] relative z-50 md:w-3/5 py-8  ">
+      <svg class=" fill-primary absolute cursor-pointer top-0 right-0 pr-4 pt-2 w-10 h-8"    onclick="document.getElementById('modal').style.display='none'" xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24"><path   d="M20.48 3.512a11.97 11.97 0 0 0-8.486-3.514C5.366-.002-.007 5.371-.007 11.999c0 3.314 1.344 6.315 3.516 8.487A11.97 11.97 0 0 0 11.995 24c6.628 0 12.001-5.373 12.001-12.001c0-3.314-1.344-6.315-3.516-8.487m-1.542 15.427a9.8 9.8 0 0 1-6.943 2.876c-5.423 0-9.819-4.396-9.819-9.819a9.8 9.8 0 0 1 2.876-6.943a9.8 9.8 0 0 1 6.942-2.876c5.422 0 9.818 4.396 9.818 9.818a9.8 9.8 0 0 1-2.876 6.942z"/><path fill="#5051fa" d="m13.537 12l3.855-3.855a1.091 1.091 0 0 0-1.542-1.541l.001-.001l-3.855 3.855l-3.855-3.855A1.091 1.091 0 0 0 6.6 8.145l-.001-.001l3.855 3.855l-3.855 3.855a1.091 1.091 0 1 0 1.541 1.542l.001-.001l3.855-3.855l3.855 3.855a1.091 1.091 0 1 0 1.542-1.541l-.001-.001z"/></svg>
+      <div class="w-full h-full flex ">
+        <div class=" w-full h-full hidden md:flex justify-center ">
+          <div class="card2 w-[60%] h-[90%]">
+            <div class="w-full flex h-[52%]">
+              <div class="w-[60%] h-full flex  justify-end pr-3 pt-16 items-center ">
+              
+                <div class="flex flex-col items-center gap-2 justify-center mr-1">
+                  <p id="playerRateCard">RT</p>
+                  <p id="playerPositionCard">POS</p>
+                  <img id="playerLogoCard" class="h-6" src="../img/unknown.png  " alt="">
+                </div>
+
+              </div>
+              <div class="h-full w-full flex  justify-center items-end">
+                <div >
+                  <img id="playerImageCard" class=" w-full relative right-4" src="../img/none.png" alt="">
+                </div>
+              </div>
+
+             </div>
+             <div class="w-full h-[45%] flex flex-col">
+                  <div class="w-full h-[30%] flex justify-center gap-2 items-center mb-8">
+                    <p id="playerNameCard">Player Name</p>
+                    <img id="playerFlagCard" class="h-4" src="../img/image.png" alt="">
+
+                  </div>
+                  <div class="w-full h-full flex gap-8">
+                    <div class="h-full w-[50%] flex flex-col items-end text-xs">
+                      <div class="flex gap-2">
+                        <p id="stats1">STS</p>
+                        <p id="stats1Area">XX</p>
+                      </div>
+                      <div class="flex gap-2">
+                        <p id="stats2">STS</p>
+                        <p id="stats2Area">XX</p>
+                      </div>
+                      <div class="flex gap-2">
+                        <p id="stats3">STS</p>
+                        <p id="stats3Area">XX</p>
+                      </div>
+                    </div>
+                    <div class="h-full w-[50%] flex flex-col items-start text-xs">
+                      <div class="flex gap-2">
+                        <p id="stats4">STS</p>
+                        <p id="stats4Area">XX</p>
+                      </div>
+                      <div class="flex gap-2">
+                        <p id="stats5">STS</p>
+                        <p id="stats5Area">XX</p>
+                      </div>
+                      <div class="flex gap-2">
+                        <p id="stats6" >STS</p>
+                        <p id="stats6Area">XX</p>
+                      </div>
+                    </div>
+
+
+                  </div>
+
+             </div>
+          </div>
+        </div>
+        
+        <div class="w-full h-full flex flex-col items-center">
+            <h2 id="modal-title" class="text-center text-2xl">Add a New Player</h2>
+            <form id="addPlayerForm" action="" class="flex flex-col items-center  justify-around h-full w-full">
+              <div class="flex w-4/5 h-3/5">
+              <div class="flex flex-col gap-[12px] justify-around w-full h-full">
+                <label for="positionInput">Position</label>
+                <label for="nameInput">Name</label>
+                <label for="photoInput">Photo</label>
+                <label for="nationalityInput">Nationality</label>
+                <label for="flagInput">Flag</label>
+                <label for="clubInput">Club</label>
+                <label for="logoInput">Logo</label>
+                <label for="ratingInput">Rating</label>
+
+              </div>
+              <div class="flex flex-col gap-1 w-full h-full justify-around ">
+                <select class="bg-[#161A1D] px-2 py-1 rounded-lg" name="positionList" id="positionList">
+                  <option value="" checked>Select a Position</option>
+                  <option value="GK">GK</option>
+                  <option value="CBL">CBL</option>
+                  <option value="CBR">CBR</option>
+                  <option value="LB">LB</option>
+                  <option value="RB">RB</option>
+                  <option value="CM">CM</option>
+                  <option value="CMR">CMR</option>
+                  <option value="CML">CML</option>
+                  <option value="LW">LW</option>
+                  <option value="RW">RW</option>
+                  <option value="ST">ST</option>
+                </select>
+                <input class="inputText" type="text" id="nameInput">
+                <input class="inputText" type="text" id="photoInput">
+                <input class="inputText" type="text" id="nationalityInput">
+                <input class="inputText" type="text" id="flagInput">
+                <input class="inputText" type="text" id="clubInput">
+                <input class="inputText" type="text" id="logoInput">
+                <input class="inputText" type="text" id="rateInput">
+
+              </div>
+            </div>
+          
+              <div class="flex flex-col md:flex-row  w-full  items-center gap-4">
+                  <div class="md:flex-col flex w-[40%]justify-center  pt-4 items-center gap-4">
+                      <p class="text-center"></p>
+                 
+                    <div id="stats-container" class="flex gap-4">
+                      <p class="text-[#ff0000]">Choose a position</p>                      
+                  </div>
+                </div>
+                <div id="form-btn-container" class="w-full  flex gap-2 flex-col justify-end items-center">
+                  <button id="form-btn" class=" w-3/5 bg-[#0E4C82] px-2 rounded-md text-lg ">Add Player</button>
+                  <button id="delete-btn"  class=" w-3/5 bg-[#ff0000] px-2 block rounded-md ">Delete Player</button>
+
+                </div>
+              </div>
+                
+ 
+               
+            </form>
+        </div>
+        
+      </div>
+      <div id="alter" class="hidden ">
+        <div class="w-full h-full flex items-center justify-center">
+          <p class="text-[#ff0000]">Fill All the INPUTS</p>
+
+        </div>
+        
+      </div>
+
+    </div>
+ 
+    
+    
+
+    
+</div>
+
+  
+ 
+        <script src="../script/players.js"></script>
+</body> 
+</html>
