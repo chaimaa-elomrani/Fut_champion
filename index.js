@@ -19,6 +19,39 @@ const openAddPlayerModal = (position) => {
 };
 const closeAddPlayerModal = () => document.getElementById('addPlayerModal').classList.remove('show');
 
+// storit data fhad larray rah clean :)
+const playersData = []
+
+// fetching data 
+const url = "./Data.json"
+const fetchData = async() => {
+    try{
+        const res = await fetch(url);
+        if(!res.ok){
+            throw new Error ("u have problem with the response !");
+        }else{
+            const data = res.json();
+            console.log("succes data : ", data);
+            return data; 
+        }
+    }catch(error){
+        console.error("fix this shit : ", error);
+    }
+}
+
+// loading data 
+const loadData = async() => {
+    try{
+        const clearData = await fetchData();
+        console.log("pure data :", clearData);
+        playersData.push(...clearData.players);
+        console.log("data add succec fully to the array : ", playersData);
+    }catch (error){
+        console.error(error);
+    }
+} 
+
+loadData();
 
 const PlayerCard = document.querySelectorAll('.player-card').forEach(card => {
     card.addEventListener("click", () => {
@@ -42,10 +75,9 @@ positionLabels.forEach(e => {
     console.log(e.textContent);
 })
 
-const playerData = {}
 const addPlayer = (event) => {
     event.preventDefault();
-    
+
     const form = event.target;
     // take inputs value 
     const PlayerName = form.querySelector('input[type="text"]').value.trim();
@@ -54,7 +86,12 @@ const addPlayer = (event) => {
     const PlayerPrice = form.querySelector('input[placeholder="0"]').value.trim();
 
     // store them in this object ghadi nrdo global mnb3d 
-    // const playerData[index] = [ PlayerName, playerPosition, playerRating, PlayerPrice ]
+    const playerData = {
+        name: PlayerName,
+        position: playerPosition,
+        rating: playerRating,
+        price: PlayerPrice
+    }
 
     console.log("player data : ", playerData);
 
@@ -63,14 +100,14 @@ const addPlayer = (event) => {
 }
 
 
-        saveDataToLocalStorage()
-        loadDataFromLocalStorage(),
-        createPlayerFromForm(),
-        editPlayer(), 
-        deletePlayer(),
-        renderPlayers(),
-        setFormation(),
-        getFormationPositions(), 
-        arrangePlayersByFormation(),
-        validatePlayerForm(),
-        showFormErrorasdhadi()
+        // saveDataToLocalStorage()
+        // loadDataFromLocalStorage(),
+        // createPlayerFromForm(),
+        // editPlayer(), 
+        // deletePlayer(),
+        // renderPlayers(),
+        // setFormation(),
+        // getFormationPositions(), 
+        // arrangePlayersByFormation(),
+        // validatePlayerForm(),
+        // showFormError()
